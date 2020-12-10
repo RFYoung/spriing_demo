@@ -27,7 +27,7 @@ public class InfectRecTests {
     @Test
     public void addTest() throws Exception {
         // Remain the test user and let id = 1
-        int testUserid = 1;
+        int testUserid = 2;
         Integer maxUserId=repository.getMaxId();
         System.out.printf("Max User ID = %d\n",maxUserId);
         //post to add - correct
