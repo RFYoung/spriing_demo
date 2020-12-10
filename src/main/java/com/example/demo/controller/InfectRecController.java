@@ -16,6 +16,7 @@ import java.time.ZoneOffset;
 @RestController
 public class InfectRecController {
 
+    // Set the repository
     @Autowired
     private InfectRecRepository<InfectRec> repository;
 
@@ -23,10 +24,11 @@ public class InfectRecController {
     public String uploadInfection(@RequestParam Integer userId,
                                   @RequestParam String randomId,
                                   HttpServletResponse response) {
+        // get the time on server
         OffsetDateTime now = OffsetDateTime.now( ZoneOffset.UTC );
 
-        System.out.println(userId+" "+randomId);
         try{
+            // make a new object and try to insert it to the server
             InfectRec newRec = new InfectRec();
             newRec.setCreateDateTime(now.toLocalDateTime());
             newRec.setUserId(userId);
@@ -35,6 +37,7 @@ public class InfectRecController {
             return "Add Success!";
         }
         catch(Exception e){
+            // change the response code
             response.setStatus(HttpServletResponse.SC_CONFLICT);
             return "Sorry Add Fail.\n";
         }
