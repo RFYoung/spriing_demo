@@ -30,6 +30,7 @@ public class InfectRecController {
         try{
             // make a new object and try to insert it to the server
             InfectRec newRec = new InfectRec();
+            // we use the server time to improve data validation
             newRec.setCreateDateTime(now.toLocalDateTime());
             newRec.setUserId(userId);
             newRec.setRandomId(randomId);
