@@ -24,13 +24,14 @@ public class InfectRecTests {
     public InfectRecTests() {
     }
 
+    //Test for adding the infect record services
     @Test
     public void addTest() throws Exception {
         // Remain the test user and let id = 1
         int testUserid = 2;
         Integer maxUserId=repository.getMaxId();
         System.out.printf("Max User ID = %d\n",maxUserId);
-        //post to add - correct
+        //post to add - valid account - correct
         final ResultActions result =
                 mvc.perform(
                 post("/user/uploadinf")
@@ -38,7 +39,7 @@ public class InfectRecTests {
                                         "\"randomId\" : testRandId")
                                 .contentType(MediaType.APPLICATION_JSON));
         result.andExpect(status().isOk());
-        //post to add - wrong
+        //post to add - invalid account - wrong
         final ResultActions result2 =
                 mvc.perform(
                         post("/user/uploadinf")
